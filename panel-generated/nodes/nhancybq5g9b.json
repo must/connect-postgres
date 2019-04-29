@@ -1,0 +1,47 @@
+{
+  "path": "/first-test/",
+  "method": "GET",
+  "public": true,
+  "in": [
+    "query"
+  ],
+  "out": [
+    "result"
+  ],
+  "configs": [],
+  "control": [],
+  "nodes": [
+    {
+      "tag": "c0",
+      "box": {
+        "left": 433,
+        "right": 675,
+        "top": 141,
+        "bottom": 271
+      },
+      "path": "/db/query"
+    }
+  ],
+  "links": [
+    [
+      {
+        "in": "query"
+      },
+      {
+        "c0": {
+          "in": "query"
+        }
+      }
+    ],
+    [
+      {
+        "c0": {
+          "out": "result"
+        }
+      },
+      {
+        "out": "result"
+      }
+    ]
+  ]
+}
