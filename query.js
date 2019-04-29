@@ -8,6 +8,7 @@
 
 const platform = require('connect-platform');
 
+const pgPool = require('./connection');
 
 /**
  *
@@ -20,7 +21,7 @@ platform.core.node({
    * it should be accessible via '/test-package/hellow'
    *
    */
-  path: '/test-package/hellow',
+  path: '/connect-postgres/query',
 
   /**
    *
@@ -46,7 +47,7 @@ platform.core.node({
    * a name we want to say 'hellow' to.
    *
    */
-  inputs: ['name'],
+  inputs: ['query'],
 
   /**
    *
@@ -57,7 +58,7 @@ platform.core.node({
    * our 'hellow' message will be the output.
    *
    */
-  outputs: ['message'],
+  outputs: ['result'],
 
   /**
    *
@@ -67,7 +68,7 @@ platform.core.node({
    * cases like errors or misconfigurations.
    *
    */
-  controlOutputs: [],
+  controlOutputs: ['error'],
 
   /**
    *
@@ -84,7 +85,7 @@ platform.core.node({
      * this is the description of the node in general.
      *
      */
-    node: 'says hellow to <span class="hl-blue">name</span>.',
+    node: 'Executes <span class="hl-blue">query</span>.',
 
     /**
      *
@@ -92,7 +93,7 @@ platform.core.node({
      *
      */
     inputs: {
-      name: 'the one to whom the hellow shall be said',
+      query: 'the query that shall be executed.',
     },
 
     /**
@@ -101,7 +102,7 @@ platform.core.node({
      *
      */
     outputs: {
-      message: 'the hellow message to the given <span class="hl-blue">name</span>.'
+      result: 'the returned result object for the <span class="hl-blue">query</span>.'
     },
 
     /**
@@ -109,7 +110,9 @@ platform.core.node({
      * these are the descriptions of possible control outputs.
      *
      */
-    controlOutputs: {}
+    controlOutputs: {
+      error: 'This signals that something bad happened with the <span class="hl-blue">query</span>.'
+    }
   }
 },
   /**
@@ -125,6 +128,6 @@ platform.core.node({
    *
    */
   (inputs, output, control) => {
-    output('message', `hellow ${inputs.name}`);
+    output('result', `hellow ${inputs.query}`);
   }
 );

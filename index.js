@@ -32,7 +32,7 @@ module.exports.platform = {
        * package, without the extension.
        *
        */
-      native : ['hellow']
+      native : ['query']
     },
     /**
      *
@@ -43,7 +43,7 @@ module.exports.platform = {
      *
      */
     aliases: {
-      '/test/hellow': '/test-package/hellow',
+      '/db/query': '/connect-postgres/query',
     }
   },
   hints: {
