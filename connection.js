@@ -1,11 +1,8 @@
+const platform = require('connect-platform');
 const { Pool } = require('pg')
 
-const pgPool = new Pool({
-  user: 'dbuser',
-  host: 'database.server.com',
-  database: 'mydb',
-  password: 'secretpassword',
-  port: 3211,
-});
+let options = platform.config.get('postgres', {});
+
+const pgPool = new Pool(options);
 
 module.exports = pgPool

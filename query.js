@@ -85,7 +85,7 @@ platform.core.node({
      * this is the description of the node in general.
      *
      */
-    node: 'Executes <span class="hl-blue">query</span>.',
+    node: 'Executes <span class="hl-blue">query</span>. Check node-postgres package documentation.',
 
     /**
      *
@@ -128,6 +128,12 @@ platform.core.node({
    *
    */
   (inputs, output, control) => {
-    output('result', `hellow ${inputs.query}`);
+    // promise
+    pgPool.query(inputs.query)
+      .then(res => output('result', res))
+      .catch(e => {
+        console.error(e.stack)
+        control('error');
+      })
   }
 );

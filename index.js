@@ -52,11 +52,11 @@ module.exports.platform = {
   Otherwise, check the sample configuration below and <a href="https://node-postgres.com/features/connecting">this page</a> for a more detailled description on all the options.`,
   sampleConfig: {
       postgres: {
-        user: 'dbuser',
-        host: 'database.server.com',
-        database: 'mydb',
-        password: 'secretpassword',
-        port: 3211,
+        "user": 'dbuser',
+        "host": 'database.server.com',
+        "database": 'mydb',
+        "password": 'secretpassword',
+        "port": 3211,
       }
     }
   }
